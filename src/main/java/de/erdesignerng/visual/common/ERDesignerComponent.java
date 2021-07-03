@@ -352,10 +352,32 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         ), this, ERDesignerBundle.SAVEMODEL);
         theSaveAction.putValue(DefaultAction.HOTKEY_KEY, KeyStroke
                 .getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
+        
+        //DefaultAction theAutoSaveAction = new DefaultAction(new SaveToFileCommand(
+        //), this, ERDesignerBundle.SAVEMODEL);
+        //theAutoSaveAction.putValue(DefaultAction.HOTKEY_KEY, KeyStroke
+                 //.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
+
+        //Control T
+        //DefaultAction theSaveAction = new DefaultAction(new SaveToFileCommand(
+        //), this, ERDesignerBundle.SAVEMODEL);
+        //theSaveAction.putValue(DefaultAction.HOTKEY_KEY, KeyStroke
+                //.getKeyStroke("Control T"));
+        
+        //Control D
+        //DefaultAction theSaveAction = new DefaultAction(new SaveToFileCommand(
+        //), this, ERDesignerBundle.SAVEMODEL);
+        //theSaveAction.putValue(DefaultAction.HOTKEY_KEY, KeyStroke
+                //.getKeyStroke("Control D"));
+
 
         DefaultAction theSaveAsAction = new DefaultAction(
                 aEvent -> new SaveToFileCommand()
                         .executeSaveFileAs(), this, ERDesignerBundle.SAVEMODELAS);
+        
+        //DefaultAction theAutoSaveAsAction = new DefaultAction(
+                //aEvent -> new SaveToFileCommand()
+                        //.executeSaveFileAs(), this, ERDesignerBundle.SAVEMODELAS);
 
         DefaultAction theSaveToRepository = new DefaultAction(
                 new SaveToRepositoryCommand(), this,
@@ -493,6 +515,7 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         theFileMenu.add(new DefaultMenuItem(theNewAction));
         theFileMenu.addSeparator();
         DefaultMenuItem theSaveItem = new DefaultMenuItem(theSaveAction);
+        //DefaultMenuItem theSaveItem2 = new DefaultMenuItem(theAutoSaveAction);
         theFileMenu.add(theSaveItem);
         KeyStroke theStroke = (KeyStroke) theSaveAction
                 .getValue(DefaultAction.HOTKEY_KEY);
@@ -503,6 +526,7 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         }
 
         theFileMenu.add(new DefaultMenuItem(theSaveAsAction));
+        //theFileMenu.add(new DefaultMenuItem(theAutoSaveAsAction));
         theFileMenu.add(new DefaultMenuItem(theLoadAction));
 
         if (worldConnector.supportsRepositories()) {
@@ -745,6 +769,7 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         theToolBar.addSeparator();
         theToolBar.add(theLoadAction);
         theToolBar.add(theSaveAsAction);
+        //theToolBar.add(theAutoSaveAsAction);
         theToolBar.addSeparator();
         theToolBar.add(zoomBox);
         theToolBar.addSeparator();
