@@ -39,6 +39,9 @@ public interface ERDesignerBundle {
 	/** \u0053\u0061\u0076\u0065\u0020\u006d\u006f\u0064\u0065\u006c. */
 	String SAVEMODEL = "SAVEMODEL";
 
+	/** \u0041\u0075\u0074\u006f\u0020\u0053\u0061\u0076\u0065. */
+	String AUTOSAVE = "AUTOSAVE";
+
 	/** \u0053\u0061\u0076\u0065\u0020\u006d\u006f\u0064\u0065\u006c\u0020\u0061\u0073\u002e\u002e\u002e. */
 	String SAVEMODELAS = "SAVEMODELAS";
 

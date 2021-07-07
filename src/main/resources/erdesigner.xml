@@ -22,6 +22,15 @@
             <Text lang="en">Save model</Text>
             <Icon>/de/erdesignerng/icons/script_save.png</Icon>
         </Entry>
+
+
+        <Entry id="AUTOSAVE">
+            <Text lang="de">Auto Save</Text>
+            <Text lang="en">Auto Save</Text>
+            <Icon>/de/erdesignerng/icons/autosave.png</Icon>
+        </Entry>
+
+
         <Entry id="SAVEMODELAS">
             <Text lang="de">Modell speichern als...</Text>
             <Text lang="en">Save model as...</Text>

@@ -30,6 +30,10 @@ import de.mogwai.common.client.looks.components.DefaultToolbar;
 import de.mogwai.common.i18n.ResourceHelper;
 import org.apache.log4j.Logger;
 
+import de.erdesignerng.visual.common.SaveToFileCommand;
+import javax.swing.*;
+import javax.swing.JOptionPane;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -62,8 +66,23 @@ public class ERDesignerMainFrame extends DefaultFrame implements
 
             @Override
             public void windowClosing(WindowEvent e) {
+                boolean keputusan = component.getSaveOnExitStatus();
+                SaveToFileCommand save = new SaveToFileCommand();
+              
+                
+                if (keputusan == true) {
+                    int hasil = JOptionPane.showConfirmDialog(null, "Mau Disimpan Gak? Project Yang Sudah Kamu Kerjakan",
+                        "Pemberitahuan! Sebelum Exit", JOptionPane.YES_NO_OPTION);
+                    if (hasil == JOptionPane.NO_OPTION) {
+                        exitApplication();
+                    }
+                    else {
+                        save.execute();
+                    }
+                }
                 exitApplication();
             }
+
         });
 
         UIInitializer.getInstance().initialize(this);

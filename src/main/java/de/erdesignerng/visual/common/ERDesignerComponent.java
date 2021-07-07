@@ -89,6 +89,8 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
 
     private DefaultMenu layoutMenu;
 
+    //private DefaultMenu autoSaveAction;
+
     private DefaultCheckboxMenuItem displayCommentsMenuItem;
 
     private DefaultCheckboxMenuItem displayGridMenuItem;
@@ -106,6 +108,10 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
     private DefaultAction zoomInAction;
 
     private DefaultAction zoomOutAction;
+
+    private DefaultAction autoSaveAction;
+
+    boolean saveToExit = false;
 
     private static final ZoomInfo ZOOMSCALE_HUNDREDPERCENT = new ZoomInfo(
             "100%", 1);
@@ -495,6 +501,8 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         DefaultAction theHelpAction = new DefaultAction(
                 aEvent -> commandShowHelp(), this, ERDesignerBundle.HELP);
 
+        DefaultAction autoSaveAction = new DefaultAction(e -> autoSave(), this, ERDesignerBundle.AUTOSAVE);
+
         exportOpenXavaAction = new DefaultAction(
                 new OpenXavaExportExportCommand(), this,
                 ERDesignerBundle.OPENXAVAEXPORT);
@@ -737,6 +745,10 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         UIInitializer.getInstance().initialize(layoutMenu);
         theViewMenu.add(layoutMenu);
 
+        //autoSaveAction = new DefaultMenu(this, ERDesignerBundle.AUTOSAVE);
+        //UIInitializer.getInstance().initialize(autoSaveAction);
+        //theViewMenu.add(autoSaveAction);
+
         theViewMenu.addSeparator();
 
         theViewMenu.add(new DefaultMenuItem(zoomInAction));
@@ -775,6 +787,7 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         theToolBar.addSeparator();
         theToolBar.add(zoomInAction);
         theToolBar.add(zoomOutAction);
+        theToolBar.add(autoSaveAction);
         theToolBar.addSeparator();
 
         handButton = new DefaultToggleButton(handAction);
@@ -1104,6 +1117,19 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         } catch (Exception e) {
             worldConnector.notifyAboutException(e);
         }
+    }
+
+    public void autoSave() {
+
+        if (this.saveToExit == true) {
+            this.saveToExit = false;
+        } else {
+            this.saveToExit = true;
+       }
+    }
+
+    public boolean getSaveOnExitStatus() {
+        return this.saveToExit;
     }
 
     public ERDesignerWorldConnector getWorldConnector() {
